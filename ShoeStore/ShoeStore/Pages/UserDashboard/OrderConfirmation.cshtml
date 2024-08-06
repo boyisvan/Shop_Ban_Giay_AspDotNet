@@ -1,0 +1,50 @@
+﻿@page "{customerId:int}/{productId:int}"
+@model ShoeStore.Pages.UserDashboard.OrderConfirmationModel
+@{
+    ViewData["Title"] = "Xác Nhận Đơn Hàng";
+}
+
+<div class="container mt-1" >
+    <div class="row mb-4">
+        <div class="col-md-6" style="margin:0 auto;">
+            <h6 class="mb-3 text-center">Thông Tin Đơn Hàng Của Bạn</h3>
+                <div class="card" >
+                <img src="@Model.Product.ImageUrl" class="card-img-top" alt="@Model.Product.Name" style="height: auto; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Product.Name</h5>
+                    <p class="card-text"><strong>Giá sản phẩm:</strong> @Model.Product.Price.ToString() đ</p>
+                        <p class="card-text" style="height:30px"><strong>Phí vận chuyển : </strong><span class="btn alert-success btn-sm" style="height:30px">Miễn phí</span></p>
+                    <p class="card-text"><strong>Tổng Tiền:</strong> @Model.TotalAmount.ToString() đ</p>
+                        <div class="d-flex justify-content-between w-100">
+                            <form method="post" class="">
+                                <input type="hidden" asp-for="CustomerId" />
+                                <input type="hidden" asp-for="ProductId" />
+                                <button type="submit" class="btn btn-success ">Xác Nhận Mua Hàng</button>
+                            </form>
+                            <a asp-page="/UserDashboard/Index" class="btn btn-outline-danger">Quay lại</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br>
+<br />
+
+<!-- CSS Tùy Chỉnh -->
+<style>
+    .card-img-top {
+        max-height: 300px;
+        object-fit: cover;
+    }
+
+    .btn-lg {
+        font-size: 1.25rem;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .container {
+        max-width: 800px;
+    }
+</style>

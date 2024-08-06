@@ -1,0 +1,63 @@
+﻿@page "{id:int}"
+@model ShoeStore.Pages.UserDashboard.ProductDetailsModel
+@{
+    ViewData["Title"] = "Chi Tiết Sản Phẩm";
+    var price = Convert.ToDouble(Model.Product.Price);
+    var newPrice = Convert.ToDecimal(price * 1.5);
+    var luotban = Convert.ToInt32(Model.Product.StockQuantity);
+    var luotbanmoi = Convert.ToInt32(luotban * 7.5);
+}
+
+<!-- Tiêu đề Trang -->
+<div class="container mt-2 w-50" style="margin:0 auto">
+    <marquee class="text-center ">Sản phẩm bán chạy của cửa hàng chúng tôi, chúng tôi cam kết bán hàng chính hàng với giá thành phù hợp với tất cả mọi người !!!</marquee>
+</div>
+
+<!-- Phần Chi Tiết Sản Phẩm -->
+<div class="container mt-2 mb-5">
+    <div class="row">
+        <!-- Hình Ảnh Sản Phẩm -->
+        <div class="col-md-6 text-center">
+            <img src="@Model.Product.ImageUrl" class="img-fluid rounded shadow" alt="@Model.Product.Name" width="95%">
+        </div>
+        <!-- Thông Tin Sản Phẩm -->
+        <div class="col-md-6">
+            <h3 class="mb-3">@Model.Product.Name</h3>
+            <div class="d-flex gap-5 align-items-center">
+                <p>Lượt bán : @luotbanmoi sản phẩm /Tháng</p>
+                <p class="text-warning">★★★★★</p>
+            </div>
+            <p><strong>Mô tả sản phẩm:</strong> @Model.Product.Description</p>
+            <div class="d-flex align-items-center mb-3">
+                <h4 class="me-3 text-success">@Model.Product.Price.ToString("N0") đ</h4>
+                <del class="text-muted">@newPrice.ToString("N0") đ</del>
+            </div>
+            <form method="post">
+                <input type="hidden" asp-for="ProductId" value="@Model.Product.ProductId" />
+                <button type="submit" class="btn btn-success  me-2">Mua Ngay</button>
+                <a asp-page="Index" class="btn btn-outline-dark ">Quay lại</a>
+            </form>
+        </div>
+    </div>
+</div>
+<br /><br />
+<br />
+<!-- Thêm một số CSS tùy chỉnh -->
+<style>
+    .container {
+        max-width: 1200px;
+    }
+
+    .text-warning {
+        font-size: 1.5rem;
+    }
+
+    .btn-lg {
+        font-size: 1.25rem;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .shadow {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+</style>

@@ -1,0 +1,21 @@
+﻿@page "{id:int}"
+@model ShoeStore.Pages.Admin.Orders.EditOrderModel
+@{
+    ViewData["Title"] = "Chỉnh Sửa Đơn Hàng";
+}
+
+<h2>Chỉnh Sửa Đơn Hàng</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Order.OrderStatus">Trang thái : </label>
+        <select asp-for="Order.OrderStatus" class="form-control">
+            <option value="Processing">Processing</option>
+            <option value="Shipped">Shipped</option>
+            <option value="Delivered">Delivered</option>
+        </select>
+        <span asp-validation-for="Order.OrderStatus" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Lưu</button>
+</form>

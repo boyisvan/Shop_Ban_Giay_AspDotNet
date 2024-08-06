@@ -1,0 +1,87 @@
+﻿@page
+@model ShoeStore.Pages.Admin.Users.CreateUserModel
+@{
+    ViewData["Title"] = "Thêm Tài Khoản Mới";
+}
+
+<div class="container mb-5">
+    <form method="post" class="border p-4 rounded bg-light form">
+        <h5 class="text-center mb-4">Thêm Tài Khoản Mới</h5>
+
+        <div class="form-group">
+            <label asp-for="User.Username" class="font-weight-bold">Tên đăng nhập <span class="text-danger">*</span></label>
+            <input asp-for="User.Username" class="form-control" placeholder="Nhập tên đăng nhập" />
+            <span asp-validation-for="User.Username" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="User.Email" class="font-weight-bold">Email <span class="text-danger">*</span></label>
+            <input asp-for="User.Email" class="form-control" placeholder="Nhập email" />
+            <span asp-validation-for="User.Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="User.PasswordHash" class="font-weight-bold">Mật khẩu <span class="text-danger">*</span></label>
+            <input asp-for="User.PasswordHash" type="password" class="form-control" placeholder="Nhập mật khẩu" />
+            <span asp-validation-for="User.PasswordHash" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="User.Role" class="font-weight-bold">Quyền <span class="text-danger">*</span></label>
+            <select asp-for="User.Role" class="form-control">
+                <option value="">Chọn quyền</option>
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+            </select>
+            <span asp-validation-for="User.Role" class="text-danger"></span>
+        </div>
+
+        <div class="text-center w-100 mt-2">
+            <button type="submit" class="btn btn-outline-success w-100">Lưu</button>
+        </div>
+    </form>
+</div>
+
+<!-- CSS Tùy Chỉnh -->
+<style>
+    .container {
+        max-width: 650px;
+    }
+
+    .form {
+        transform: scale(0.8);
+    }
+
+    .form-control {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .bg-light {
+        background-color: #f8f9fa;
+    }
+
+    .border {
+        border: 1px solid #ced4da;
+    }
+
+    .rounded {
+        border-radius: 0.375rem;
+    }
+
+    .font-weight-bold {
+        font-weight: 600;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-danger {
+        font-size: 0.875rem;
+    }
+</style>

@@ -1,0 +1,38 @@
+﻿@page "{id:int}"
+@model ShoeStore.Pages.Admin.Customers.EditCustomerModel
+@{
+    ViewData["Title"] = "Chỉnh Sửa Khách Hàng";
+}
+
+<h2>Chỉnh Sửa Khách Hàng</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Customer.FirstName">Họ : </label>
+        <input asp-for="Customer.FirstName" class="form-control" />
+        <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.LastName">Tên : </label>
+        <input asp-for="Customer.LastName" class="form-control" />
+        <span asp-validation-for="Customer.LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Email"></label>
+        <input asp-for="Customer.Email" class="form-control" />
+        <span asp-validation-for="Customer.Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.PhoneNumber">Số điện thoại : </label>
+        <input asp-for="Customer.PhoneNumber" class="form-control" />
+        <span asp-validation-for="Customer.PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Customer.Address">Địa chỉ : </label>
+        <input asp-for="Customer.Address" class="form-control" />
+        <span asp-validation-for="Customer.Address" class="text-danger"></span>
+    </div>
+    <br />
+    <input type="hidden" asp-for="Customer.CustomerId" />
+    <button type="submit" class="btn btn-primary">Lưu</button>
+</form>

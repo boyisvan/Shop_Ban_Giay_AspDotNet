@@ -1,0 +1,91 @@
+﻿@page
+@model ShoeStore.Pages.Admin.Categories.IndexModel
+@{
+    ViewData["Title"] = "Quản Lý Danh Mục";
+}
+
+<div class="d-flex gap-4 align-items-center">
+    <h6>@ViewData["Title"]</h6>
+    <button class="btn btn-outline-info" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Chọn trang quản lí</button>
+</div>
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Giày Hoàng Yến</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <a href="/Admin/Index" class="alert alert-success text-decoration-none w-100 d-block">Quản lí sản phẩm</a>
+        <a href="/Admin/Categories" class="alert alert-info text-decoration-none w-100  d-block">Quản lí danh mục sản phẩm</a>
+        <a href="/Admin/Orders" class="alert alert-warning text-decoration-none w-100 d-block">Quản lí đơn hàng</a>
+        <a href="/Admin/Users" class="alert alert-danger text-decoration-none w-100 d-block">Quản lí tài khoản </a>
+        <a href="/Admin/Customers" class="alert alert-primary text-decoration-none w-100 d-block ">Quản lí khách hàng</a>
+        <a asp-page="/Account/Login" class="alert alert-secondary text-decoration-none w-100 d-block ">Đăng xuất</a>
+    </div>
+</div>
+<br />
+
+
+<p>
+    <a class="btn btn-success" asp-page="CreateCategory">Thêm Danh Mục Mới</a>
+</p>
+<table class="table table-hover table-bordered text-center">
+    <thead>
+        <tr>
+            <th>Tên Danh Mục</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Categories)
+        {
+            <tr>
+                <td>@item.CategoryName</td>
+                <td>
+                    <a asp-page="EditCategory" asp-route-id="@item.CategoryId" class="btn btn-warning">Sửa</a>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-id="@item.CategoryId" onclick="setDeleteFormAction('@Url.Page("Index", new { handler = "Delete", id = item.CategoryId })')">Xóa</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<br />
+<br />
+<!-- Modal Xác Nhận Xóa -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Xác Nhận Xóa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc chắn muốn xóa danh mục này không?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                <form method="post" id="deleteForm">
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function setDeleteFormAction(actionUrl) {
+            document.getElementById('deleteForm').setAttribute('action', actionUrl);
+        }
+
+        function navigateToSelectedPage() {
+            var selectedPage = document.getElementById('manageSelect').value;
+            window.location.href = selectedPage;
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+}

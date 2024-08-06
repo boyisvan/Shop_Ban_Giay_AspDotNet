@@ -1,0 +1,48 @@
+﻿@page
+@model ShoeStore.Pages.UserDashboard.SuccessModel
+@{
+    ViewData["Title"] = "Đặt Hàng Thành Công";
+}
+<div class="container mt-5">
+    <div class="text-center mb-4 ">
+        <h3 class="display-4 text-success">Đặt Hàng Thành Công</h3>
+        <div class="alert alert-success  text-center" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+        <a asp-page="Index" class="btn btn-success">Quay lại trang chủ</a>
+    </div>
+</div>
+<!-- Chỉ hiển thị thông báo nếu có thông điệp thành công -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                title: 'Thành công!',
+                text: 'Cảm ơn bạn đã mua hàng của chúng tôi',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>
+}
+
+<style>
+    .container {
+        max-width: 600px;
+    }
+
+    .display-4 {
+        font-size: 2.5rem;
+    }
+
+    .alert {
+        font-size: 1.2rem;
+    }
+
+    .btn-lg {
+        font-size: 1.25rem;
+        padding: 0.75rem 1.5rem;
+    }
+
+</style>

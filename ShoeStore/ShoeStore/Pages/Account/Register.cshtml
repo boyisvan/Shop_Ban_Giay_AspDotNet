@@ -1,0 +1,45 @@
+﻿@page
+@model ShoeStore.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Đăng Ký";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>Đăng Ký Thành Viên</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <label asp-for="Input.Username">Tên Đăng Nhập <span style="color:red">*</span></label>
+                            <input asp-for="Input.Username" class="form-control" />
+                            <span asp-validation-for="Input.Username" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Password">Mật Khẩu <span style="color:red">*</span></label>
+                            <input asp-for="Input.Password" type="password" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Email">Email <span style="color:red">*</span></label>
+                            <input asp-for="Input.Email" class="form-control" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <button type="submit" class="btn btn-outline-success w-100">Đăng Ký Ngay</button>
+                        <br />
+                        <a href="/Account/Login" class="alert d-block text-decoration-none alert-light">Đã có tài khoản? Đăng nhập ngay</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .container {
+        transform: scale(0.9);
+    }
+</style>

@@ -1,0 +1,39 @@
+﻿@page "{productId:int}"
+@model ShoeStore.Pages.UserDashboard.CustomerInfoModel
+
+<form method="post" class="w-50" style="margin:0 auto;">
+    <fieldset class="border p-3 rounded">
+        <h5 class="w-auto text-center">Thông tin nhận sản phẩm </h5>
+        <div class="form-group">
+            <label for="FirstName">Họ <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm" asp-for="Customer.FirstName" placeholder="Nhập họ của bạn" />
+            <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="LastName">Tên <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm" asp-for="Customer.LastName" placeholder="Nhập tên của bạn" />
+            <span asp-validation-for="Customer.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="Email">Email <span class="text-danger">*</span></label>
+            <input type="email" class="form-control form-control-sm" asp-for="Customer.Email" placeholder="Nhập email của bạn" />
+            <span asp-validation-for="Customer.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="PhoneNumber">Số điện thoại <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm" asp-for="Customer.PhoneNumber" placeholder="Nhập số điện thoại của bạn" />
+            <span asp-validation-for="Customer.PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="Address">Địa chỉ nhận hàng <span class="text-danger">*</span></label>
+            <input type="text" class="form-control form-control-sm" asp-for="Customer.Address" placeholder="Nhập địa chỉ của bạn" />
+            <span asp-validation-for="Customer.Address" class="text-danger"></span>
+        </div>
+        <br />
+        <input type="hidden" asp-for="ProductId" />
+        <div class="text-center">
+            <button type="submit" class="btn btn-success w-100">Xác nhận</button>
+        </div>
+    </fieldset>
+   
+</form>
